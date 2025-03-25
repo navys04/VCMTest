@@ -27,6 +27,8 @@ protected:
 	UPROPERTY(BlueprintAssignable, Category = "Health Payload")
 	FHealthChangedSignature OnHealthChanged;
 
+	virtual void BeginDestroy() override;
+	
 private:
 	void HandleHealthChanged(const FHealthChangedMessage& Message, const TSharedRef<IMessageContext>& MessageContext);
 	TSharedPtr<FMessageEndpoint> HealthMessage;

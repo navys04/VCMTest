@@ -13,6 +13,13 @@ void UHealthPayload::Init()
 	HealthMessage->Subscribe<FHealthChangedMessage>();
 }
 
+void UHealthPayload::BeginDestroy()
+{
+	UObject::BeginDestroy();
+
+	HealthMessage.Reset();
+}
+
 void UHealthPayload::HandleHealthChanged(const FHealthChangedMessage& Message,
                                          const TSharedRef<IMessageContext>& MessageContext)
 {
