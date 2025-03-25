@@ -11,17 +11,6 @@ void UHealthPayload::Init()
 {
 	HealthMessage = FMessageEndpoint::Builder("HealthEndpoint").Handling<FHealthChangedMessage>(this, &ThisClass::HandleHealthChanged);
 	HealthMessage->Subscribe<FHealthChangedMessage>();
-
-	FTimerHandle Timer;
-	if (GetOuter())
-	{
-		GetOuter()->GetWorld()->GetTimerManager().SetTimer(Timer, FTimerDelegate::CreateUObject(this, &ThisClass::TimerTick), 0.25f, true);
-	}
-}
-
-void UHealthPayload::TimerTick()
-{
-	UE_LOG(LogTemp, Display, TEXT("Payload alive!"));
 }
 
 void UHealthPayload::HandleHealthChanged(const FHealthChangedMessage& Message,

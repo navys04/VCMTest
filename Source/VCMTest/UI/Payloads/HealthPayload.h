@@ -28,8 +28,6 @@ protected:
 	FHealthChangedSignature OnHealthChanged;
 
 private:
-	void TimerTick();
-	
 	void HandleHealthChanged(const FHealthChangedMessage& Message, const TSharedRef<IMessageContext>& MessageContext);
 	TSharedPtr<FMessageEndpoint> HealthMessage;
 };
